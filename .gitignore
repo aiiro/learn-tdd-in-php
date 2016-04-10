@@ -11,3 +11,10 @@
 /app/Config/core.php
 /app/Config/database.php
 /vendors/*
+
+# OS-specific
+
+.DS_Store
+
+# Vagrant
+/.vagrant
