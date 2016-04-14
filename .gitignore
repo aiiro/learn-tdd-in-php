@@ -4,17 +4,14 @@
 /config/app.php
 /tmp/*
 /logs/*
-
 # CakePHP 2
-
 /app/tmp/*
 /app/Config/core.php
 /app/Config/database.php
 /vendors/*
-
 # OS-specific
-
 .DS_Store
-
 # Vagrant
 /.vagrant
+/cookbooks/
+/.chef

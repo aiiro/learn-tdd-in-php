@@ -14,6 +14,39 @@ Vagrant.configure(2) do |config|
     develop.vm.box = "centos7.1-tdd"
     develop.vm.box_url = "https://github.com/CommanderK5/packer-centos-template/releases/download/0.7cd.1/vagrant-centos-7.1.box"
     develop.vm.network "private_network", ip: "192.168.33.10"
+
+    develop.vm.synced_folder "application", "/var/www/application/current",
+    id: "vagrant-root", :nfs => false,
+    :owner => "vagrant",
+    :group => "vagrant",
+    :mount_options => ["dmode=775,fmode=775"]
+
+    # provision setting
+    develop.vm.provision :chef_solo do |chef|
+      chef.cookbooks_path = "./cookbooks"
+      chef.json = {
+        nginx: {
+          docroot: {
+            owner: "vagrant",
+            group: "vagrant",
+            path: "/var/www/application/current/app/webroot",
+            force_create: true
+          },
+          default: {
+            fastcgi_params: {  CAKE_ENV: "development" }
+          },
+          test: {
+            available: true,
+            fastcgi_params: {  CAKE_ENV: "test" }
+          }
+        }
+      }
+
+      chef.run_list = %w[
+        recipe[yum-epel]
+        recipe[nginx]
+      ]
+    end
   end
   # 2nd virtual server
   config.vm.define :ci do |ci|
