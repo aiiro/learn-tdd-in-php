@@ -38,13 +38,15 @@ Vagrant.configure(2) do |config|
           test: {
             available: true,
             fastcgi_params: {  CAKE_ENV: "test" }
-          }
+          },
+          env: ["php"]
         }
       }
 
       chef.run_list = %w[
         recipe[yum-epel]
         recipe[nginx]
+        recipe[php-env]
       ]
     end
   end

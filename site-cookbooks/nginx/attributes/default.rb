@@ -5,3 +5,4 @@ default['nginx']['docroot']['force_create'] = false
 default['nginx']['default']['fastcgi_params'] = []
 default['nginx']['test']['available'] = false
 default['nginx']['test']['fastcgi_params'] = []
+default['nginx']['env'] = []

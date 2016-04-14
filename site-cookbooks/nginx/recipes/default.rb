@@ -41,11 +41,21 @@ template "/etc/nginx/nginx.conf" do
   group "root"
   mode 0644
   action :create
+  notifies :reload, "service[nginx]"
 end
 
 # copy index.html
 template node['nginx']['docroot']['path']+"/index.html" do
   source "index.html.erb"
+  owner "root"
+  group "root"
+  mode 0644
+  action :create
+end
+
+# copy index.php
+template node['nginx']['docroot']['path']+"/index.php" do
+  source "index.php.erb"
   owner "root"
   group "root"
   mode 0644
