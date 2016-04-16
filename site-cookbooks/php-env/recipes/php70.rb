@@ -15,7 +15,7 @@ yum_repository 'remi-php70' do
 end
 
 %w{php php-fpm php-cli php-common php-devel php-json php-mysql php-mbstring php-mcrypt php-opcache
-    php-pdo php-pear php-pecl-memcached php-pecl-zip php-process}.each do |pkg|
+    php-pdo php-pear php-pecl-memcached php-pecl-zip php-process php-xdebug graphviz}.each do |pkg|
   package pkg do
     action :install
     notifies :restart, "service[php-fpm]"
@@ -24,4 +24,20 @@ end
 
 service "php-fpm" do
   action [:enable, :start]
+end
+
+remote_file "/usr/local/bin/composer" do
+  source "http://getcomposer.org/composer.phar"
+  action :create_if_missing
+  owner "root"
+  group "root"
+  mode 0755
+end
+
+remote_file "/usr/local/bin/phpdoc" do
+  source "http://www.phpdoc.org/phpDocumentor.phar"
+  action :create_if_missing
+  owner "root"
+  group "root"
+  mode 0755
 end
