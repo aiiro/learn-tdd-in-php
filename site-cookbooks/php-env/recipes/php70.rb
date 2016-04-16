@@ -14,7 +14,8 @@ yum_repository 'remi-php70' do
   action :create
 end
 
-%w{php70 php-fpm}.each do |pkg|
+%w{php php-fpm php-cli php-common php-devel php-json php-mysql php-mbstring php-mcrypt php-opcache
+    php-pdo php-pear php-pecl-memcached php-pecl-zip php-process}.each do |pkg|
   package pkg do
     action :install
     notifies :restart, "service[php-fpm]"

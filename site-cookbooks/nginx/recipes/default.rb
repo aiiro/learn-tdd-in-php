@@ -1,6 +1,6 @@
 include_recipe "yum-epel"
 
-# Install nginx
+# install nginx
 package "nginx" do
   action :install
 end
@@ -62,7 +62,7 @@ template node['nginx']['docroot']['path']+"/index.php" do
   action :create
 end
 
-# enable and start nginx
+# start nginx
 service "nginx" do
   action [:enable, :start]
   supports :status => true, :restart => true, :reload => true
