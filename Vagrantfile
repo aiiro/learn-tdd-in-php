@@ -50,6 +50,7 @@ Vagrant.configure(2) do |config|
         recipe[yum-epel]
         recipe[nginx]
         recipe[php-env::php70]
+        recipe[mariadb]
       ]
     end
   end

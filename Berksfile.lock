@@ -1,6 +1,8 @@
 DEPENDENCIES
   basic
     path: site-cookbooks/basic
+  mariadb
+    path: site-cookbooks/mariadb
   nginx
     path: site-cookbooks/nginx
   php-env
@@ -10,6 +12,7 @@ DEPENDENCIES
 
 GRAPH
   basic (0.1.0)
+  mariadb (0.1.0)
   nginx (0.1.0)
   php-env (0.1.0)
   yum (3.10.0)
