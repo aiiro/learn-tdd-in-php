@@ -17,6 +17,7 @@ Vagrant.configure(2) do |config|
 
     develop.vm.synced_folder "application", "/var/www/application/current",
     id: "vagrant-root", :nfs => false,
+    :create => true,
     :owner => "vagrant",
     :group => "vagrant",
     :mount_options => ["dmode=775,fmode=775"]
@@ -44,9 +45,11 @@ Vagrant.configure(2) do |config|
       }
 
       chef.run_list = %w[
+        recipe[basic]
+        recipe[yum]
         recipe[yum-epel]
         recipe[nginx]
-        recipe[php-env]
+        recipe[php-env::php70]
       ]
     end
   end
