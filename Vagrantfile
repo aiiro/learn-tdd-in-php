@@ -54,6 +54,7 @@ Vagrant.configure(2) do |config|
         recipe[ruby-env]
         recipe[capistrano]
         recipe[jenkins::default]
+        recipe[jenkins::plugin]
       ]
     end
   end
