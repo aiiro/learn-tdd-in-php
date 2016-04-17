@@ -1,7 +1,3 @@
-package "yum-fastestmirror" do
-  action :install
-end
-
 execute "set-timezone" do
   user "root"
   command "timedatectl set-timezone Asia/Tokyo"

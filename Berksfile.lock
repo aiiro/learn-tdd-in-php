@@ -4,6 +4,8 @@ DEPENDENCIES
   capistrano
     path: site-cookbooks/capistrano
   hostsfile
+  jenkins
+    path: site-cookbooks/jenkins
   mariadb
     path: site-cookbooks/mariadb
   nginx
@@ -19,6 +21,7 @@ GRAPH
   basic (0.1.0)
   capistrano (0.1.0)
   hostsfile (2.4.5)
+  jenkins (0.1.0)
   mariadb (0.1.0)
   nginx (0.1.0)
   php-env (0.1.0)

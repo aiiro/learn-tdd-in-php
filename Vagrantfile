@@ -45,14 +45,15 @@ Vagrant.configure(2) do |config|
       }
 
       chef.run_list = %w[
-        recipe[basic]
         recipe[yum]
         recipe[yum-epel]
+        recipe[basic]
         recipe[nginx]
         recipe[php-env::php70]
         recipe[mariadb]
         recipe[ruby-env]
         recipe[capistrano]
+        recipe[jenkins::default]
       ]
     end
   end
