@@ -51,6 +51,8 @@ Vagrant.configure(2) do |config|
         recipe[nginx]
         recipe[php-env::php70]
         recipe[mariadb]
+        recipe[ruby-env]
+        recipe[capistrano]
       ]
     end
   end
