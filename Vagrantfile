@@ -109,5 +109,34 @@ Vagrant.configure(2) do |config|
     staging.vm.box = "centos7.1-tdd"
     staging.vm.box_url = "https://github.com/CommanderK5/packer-centos-template/releases/download/0.7cd.1/vagrant-centos-7.1.box"
     staging.vm.network "private_network", ip: "192.168.33.12"
+
+    # provision setting
+    staging.vm.provision :chef_solo do |chef|
+      chef.log_level = "debug"
+      chef.cookbooks_path = "./cookbooks"
+      chef.json = {
+        nginx: {
+          docroot: {
+            owner: "vagrant",
+            group: "vagrant",
+            path: "/var/www/application/current/app/webroot",
+            force_create: true
+          },
+          default: {
+            fastcgi_params: {  CAKE_ENV: "production" }
+          },
+          env: ["php"]
+        }
+      }
+      chef.run_list = %w[
+        recipe[yum]
+        recipe[yum-epel]
+        recipe[basic]
+        recipe[nginx]
+        recipe[php-env::php70]
+        recipe[mariadb]
+      ]
+    end
+
   end
 end
