@@ -20,7 +20,7 @@ Vagrant.configure(2) do |config|
     :create => true,
     :owner => "vagrant",
     :group => "vagrant",
-    :mount_options => ["dmode=775,fmode=775"]
+    :mount_options => ["dmode=777,fmode=666"]
 
     # provision setting
     develop.vm.provision :chef_solo do |chef|

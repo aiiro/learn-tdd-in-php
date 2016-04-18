@@ -15,3 +15,5 @@
 /.vagrant
 /cookbooks/
 /.chef
+
+application
