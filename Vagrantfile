@@ -53,7 +53,7 @@ Vagrant.configure(2) do |config|
         recipe[mariadb]
         recipe[ruby-env]
         recipe[capistrano]
-        recipe[jenkins::default]
+        recipe[jenkins::rpm]
         recipe[jenkins::plugin]
       ]
     end
