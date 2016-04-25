@@ -20,7 +20,7 @@ Vagrant.configure(2) do |config|
     :create => true,
     :owner => "vagrant",
     :group => "vagrant",
-    :mount_options => ["dmode=777,fmode=666"]
+    :mount_options => ["dmode=777,fmode=777"]
 
     # provision setting
     develop.vm.provision :chef_solo do |chef|
@@ -49,7 +49,7 @@ Vagrant.configure(2) do |config|
         recipe[yum-epel]
         recipe[basic]
         recipe[nginx]
-        recipe[php-env::php70]
+        recipe[php-env::php56]
         recipe[mariadb]
         recipe[ruby-env]
         recipe[capistrano]
@@ -92,11 +92,11 @@ Vagrant.configure(2) do |config|
         recipe[yum-epel]
         recipe[basic]
         recipe[nginx]
-        recipe[php-env::php70]
+        recipe[php-env::php56]
         recipe[mariadb]
         recipe[ruby-env]
         recipe[capistrano]
-        recipe[jenkins::default]
+        recipe[jenkins::rpm]
         recipe[jenkins::plugin]
       ]
     end
@@ -133,7 +133,7 @@ Vagrant.configure(2) do |config|
         recipe[yum-epel]
         recipe[basic]
         recipe[nginx]
-        recipe[php-env::php70]
+        recipe[php-env::php56]
         recipe[mariadb]
       ]
     end
