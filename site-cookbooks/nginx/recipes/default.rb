@@ -5,6 +5,20 @@ package "nginx" do
   action :install
 end
 
+# create group
+group 'www-data' do
+  action :create
+end
+
+# add member to group
+%w{vagrant nginx}.each do |mem|
+  group 'www-data' do
+    action :modify
+    members mem
+    append true
+  end
+end
+
 # create DocumentRoot directory
 directory node['nginx']['docroot']['path'] do
   owner node['nginx']['docroot']['owner']
