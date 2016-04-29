@@ -15,6 +15,10 @@ Vagrant.configure(2) do |config|
     develop.vm.box_url = "https://github.com/CommanderK5/packer-centos-template/releases/download/0.7cd.1/vagrant-centos-7.1.box"
     develop.vm.network "private_network", ip: "192.168.33.10"
 
+    develop.vm.provider "virtualbox" do |vm|
+      vm.memory = 2048
+    end
+
     develop.vm.synced_folder "application", "/var/www/application/current",
     id: "vagrant-root", :nfs => false,
     :create => true,
@@ -67,6 +71,10 @@ Vagrant.configure(2) do |config|
     ci.vm.box_url = "https://github.com/CommanderK5/packer-centos-template/releases/download/0.7cd.1/vagrant-centos-7.1.box"
     ci.vm.network "private_network", ip: "192.168.33.11"
 
+    ci.vm.provider "virtualbox" do |vm|
+      vm.memory = 2048
+    end
+
     # provision setting
     ci.vm.provision :chef_solo do |chef|
       chef.log_level = "debug"
@@ -109,6 +117,10 @@ Vagrant.configure(2) do |config|
     staging.vm.box = "centos7.1-tdd"
     staging.vm.box_url = "https://github.com/CommanderK5/packer-centos-template/releases/download/0.7cd.1/vagrant-centos-7.1.box"
     staging.vm.network "private_network", ip: "192.168.33.12"
+
+    staging.vm.provider "virtualbox" do |vm|
+      vm.memory = 2048
+    end
 
     # provision setting
     staging.vm.provision :chef_solo do |chef|
