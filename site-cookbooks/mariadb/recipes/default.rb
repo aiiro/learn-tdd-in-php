@@ -10,3 +10,7 @@ end
     action :install
   end
 end
+
+service "mysql" do
+  action [:enable, :start]
+end
