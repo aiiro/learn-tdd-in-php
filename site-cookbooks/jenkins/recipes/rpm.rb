@@ -11,7 +11,8 @@ end
 
 rpm_package "jenkins" do
   source "#{Chef::Config[:file_cache_path]}/jenkins-1.658-1.1.noarch.rpm"
-  action :nothing
+  action :install
+  not_if "rpm -q jenkins"
 end
 
 service "jenkins" do
